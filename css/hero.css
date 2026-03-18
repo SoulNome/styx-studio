@@ -173,6 +173,19 @@
 }
 .btn-s:hover { border-color: var(--v); color: var(--v); box-shadow: var(--gv); transform: translateY(-4px); }
 
+/* Botón Hablemos — más visible */
+.btn-hablemos {
+  border-color: rgba(180,79,255,.5);
+  color: var(--v);
+  box-shadow: 0 0 18px rgba(180,79,255,.18), inset 0 0 18px rgba(180,79,255,.04);
+  animation: hablemosPulse 3s ease-in-out infinite;
+}
+@keyframes hablemosPulse {
+  0%, 100% { box-shadow: 0 0 18px rgba(180,79,255,.18), inset 0 0 18px rgba(180,79,255,.04); }
+  50%       { box-shadow: 0 0 32px rgba(180,79,255,.4),  inset 0 0 22px rgba(180,79,255,.08); }
+}
+.btn-hablemos:hover { border-color: var(--v); color: #fff; box-shadow: 0 0 40px rgba(180,79,255,.5); transform: translateY(-4px); }
+
 /* Badges de estado */
 .h-badges {
   display: flex;

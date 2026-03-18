@@ -86,7 +86,7 @@
 
     <div class="hbtns">
       <a href="#services" class="btn-p">Explorar Servicios</a>
-      <a href="#cta"      class="btn-s">Hablemos</a>
+      <a href="#" class="btn-s btn-hablemos" id="btnHablemos">Hablemos</a>
     </div>
 
     <div class="h-badges">
@@ -819,7 +819,46 @@
   </footer>
 
 
+  <!-- ── Modal Hablemos ── -->
+  <div id="modalHablemos" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.75);backdrop-filter:blur(10px);align-items:center;justify-content:center;">
+    <div style="background:linear-gradient(135deg,#060d14,#0b0d1a);border:1px solid rgba(0,255,240,.2);max-width:420px;width:90%;padding:3rem 2.5rem;text-align:center;position:relative;box-shadow:0 0 60px rgba(0,255,240,.1)">
+      <button onclick="document.getElementById('modalHablemos').style.display='none'" style="position:absolute;top:1rem;right:1.2rem;background:none;border:none;color:rgba(255,255,255,.4);font-size:1.4rem;cursor:pointer;line-height:1">&times;</button>
+      <p style="font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.5em;color:var(--c);text-transform:uppercase;margin-bottom:1.5rem">Contacto directo</p>
+      <h3 style="font-family:'Cinzel Decorative',serif;font-size:1.4rem;color:#fff;margin-bottom:2.5rem;line-height:1.4">Hablemos de<br/>tu proyecto</h3>
+
+      <a href="tel:+573143173801" style="display:flex;align-items:center;justify-content:center;gap:1rem;background:rgba(0,255,240,.06);border:1px solid rgba(0,255,240,.25);padding:1.4rem 2rem;margin-bottom:1rem;text-decoration:none;transition:all .3s;color:#fff"
+         onmouseover="this.style.background='rgba(0,255,240,.12)'" onmouseout="this.style.background='rgba(0,255,240,.06)'">
+        <span style="font-size:1.6rem">&#128222;</span>
+        <div style="text-align:left">
+          <p style="font-size:.55rem;letter-spacing:.3em;color:var(--c);text-transform:uppercase;margin-bottom:.3rem">Llamar ahora</p>
+          <p style="font-size:1.25rem;font-family:'Cinzel',serif;letter-spacing:.08em">+57 314 317 3801</p>
+        </div>
+      </a>
+
+      <a href="mailto:juan.p.toro@correounivalle.edu.co" style="display:flex;align-items:center;justify-content:center;gap:1rem;background:rgba(180,79,255,.05);border:1px solid rgba(180,79,255,.2);padding:1.2rem 2rem;text-decoration:none;transition:all .3s;color:#fff"
+         onmouseover="this.style.background='rgba(180,79,255,.12)'" onmouseout="this.style.background='rgba(180,79,255,.05)'">
+        <span style="font-size:1.4rem">&#9993;</span>
+        <div style="text-align:left">
+          <p style="font-size:.55rem;letter-spacing:.3em;color:var(--v);text-transform:uppercase;margin-bottom:.3rem">Correo</p>
+          <p style="font-size:.85rem;font-family:'Cinzel',serif">juan.p.toro@correounivalle.edu.co</p>
+        </div>
+      </a>
+
+      <p style="margin-top:2rem;font-size:.6rem;letter-spacing:.2em;color:rgba(255,255,255,.25);text-transform:uppercase">Respondemos en menos de 24 horas</p>
+    </div>
+  </div>
+
   <!-- ── Scripts — orden importa ── -->
+  <script>
+    // Modal Hablemos
+    var m = document.getElementById('modalHablemos');
+    document.getElementById('btnHablemos').addEventListener('click', function(e){
+      e.preventDefault();
+      m.style.display = 'flex';
+    });
+    m.addEventListener('click', function(e){ if(e.target === m) m.style.display = 'none'; });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') m.style.display = 'none'; });
+  </script>
   <script src="js/webgl-bg.js"></script>
   <script src="js/cursor.js"></script>
   <script src="js/animations.js"></script>
