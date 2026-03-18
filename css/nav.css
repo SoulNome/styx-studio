@@ -1,0 +1,133 @@
+/* ─────────────────────────────────────────────
+   STYX STUDIO — Navegación
+   ───────────────────────────────────────────── */
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 2rem 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: padding .5s var(--ease);
+}
+nav.scrolled {
+  padding: 1rem 5rem;
+  background: rgba(2,3,8,.88);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(0,255,240,.05);
+}
+
+/* Logo en nav */
+.nlogo {
+  font-family: 'Cinzel', serif;
+  font-size: .95rem;
+  letter-spacing: .4em;
+  text-decoration: none;
+  color: var(--w);
+  position: relative;
+  z-index: 1;
+}
+.nlogo b {
+  color: var(--c);
+  font-weight: 400;
+}
+
+/* Links */
+.nlinks {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  position: relative;
+  z-index: 1;
+}
+.nlinks a {
+  font-size: .62rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--s);
+  text-decoration: none;
+  transition: color .3s;
+  position: relative;
+  padding-bottom: 4px;
+}
+.nlinks a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1px;
+  background: var(--c);
+  transition: width .35s var(--ease);
+}
+.nlinks a:hover { color: var(--c); }
+.nlinks a:hover::after { width: 100%; }
+
+/* CTA botón nav */
+.ncta {
+  font-family: 'Cinzel', serif;
+  font-size: .6rem;
+  letter-spacing: .2em;
+  padding: .7rem 1.8rem;
+  border: 1px solid rgba(0,255,240,.25);
+  color: var(--c);
+  text-decoration: none;
+  transition: all .35s;
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+  z-index: 1;
+}
+.ncta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--c);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .35s var(--ease);
+  z-index: -1;
+}
+.ncta:hover { color: var(--bg); }
+.ncta:hover::before { transform: scaleX(1); }
+
+/* Hamburguesa mobile */
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: none;
+  z-index: 1;
+}
+.burger span {
+  display: block;
+  width: 26px; height: 1px;
+  background: var(--w);
+  transition: all .4s var(--ease);
+}
+
+/* Menú móvil */
+.mob {
+  position: fixed;
+  inset: 0;
+  background: rgba(2,3,8,.97);
+  backdrop-filter: blur(30px);
+  z-index: 990;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  transform: translateX(100%);
+  transition: transform .6s var(--ease);
+}
+.mob.open { transform: translateX(0); }
+.mob a {
+  font-family: 'Cinzel', serif;
+  font-size: 1.8rem;
+  letter-spacing: .15em;
+  color: var(--w);
+  text-decoration: none;
+  transition: color .3s;
+}
+.mob a:hover { color: var(--c); }

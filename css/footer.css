@@ -1,0 +1,164 @@
+/* ─────────────────────────────────────────────
+   STYX STUDIO — Footer & Responsive
+   ───────────────────────────────────────────── */
+
+footer {
+  padding: 4rem 5rem;
+  border-top: 1px solid rgba(0,255,240,.05);
+  position: relative; z-index: 1;
+  background: rgba(0,0,0,.7);
+}
+
+.foot-g {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 4rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(0,255,240,.04);
+  margin-bottom: 2rem;
+}
+
+/* Logo en footer */
+.flogo {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: .95rem;
+  letter-spacing: .3em;
+  margin-bottom: .6rem;
+}
+.flogo b { color: var(--c); font-weight: 400; }
+
+.ftag {
+  font-size: .56rem;
+  letter-spacing: .25em;
+  color: var(--cdd);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.fdesc {
+  font-size: .82rem;
+  color: var(--s);
+  line-height: 1.85;
+}
+
+/* Columnas de links */
+.fl-title {
+  font-family: 'Cinzel', serif;
+  font-size: .6rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--cd);
+  margin-bottom: 1.5rem;
+}
+.fl-list { list-style: none; }
+.fl-list li { margin-bottom: 1rem; }
+.fl-list a {
+  font-size: .8rem;
+  color: var(--s);
+  text-decoration: none;
+  transition: color .3s;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+.fl-list a::before {
+  content: '\2192';
+  color: var(--cdd);
+  font-size: .65rem;
+  transition: all .3s;
+}
+.fl-list a:hover { color: var(--c); }
+.fl-list a:hover::before { color: var(--c); }
+
+/* Redes sociales */
+.fsoc-row { display: flex; gap: .8rem; margin-top: 1.5rem; }
+.fsoc {
+  width: 38px; height: 38px;
+  border: 1px solid var(--s2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--s);
+  font-size: .65rem;
+  text-decoration: none;
+  transition: all .3s;
+  clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+  font-family: 'Cinzel', serif;
+}
+.fsoc:hover { border-color: var(--c); color: var(--c); box-shadow: 0 0 18px rgba(0,255,240,.25); }
+
+/* Barra inferior */
+.foot-bottom {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.fcopy { font-size: .58rem; letter-spacing: .1em; color: var(--s2); }
+
+.fback {
+  font-family: 'Cinzel', serif;
+  font-size: .56rem;
+  letter-spacing: .2em;
+  color: var(--s);
+  text-decoration: none;
+  border: 1px solid var(--s2);
+  padding: .5rem 1.2rem;
+  transition: all .3s;
+  clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+}
+.fback:hover { border-color: var(--c); color: var(--c); }
+
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE — Tablet y Móvil
+   ───────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  /* Nav */
+  nav { padding: 1.4rem 1.5rem; }
+  .nlinks { display: none; }
+  .burger { display: flex; }
+
+  /* Filosofía */
+  #philosophy { padding: 6rem 1.5rem; }
+  .phi { grid-template-columns: 1fr; gap: 4rem; }
+  .phi-v { display: none; }
+
+  /* Números */
+  .num-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Proceso */
+  .prc-g { grid-template-columns: 1fr; gap: 3rem; }
+  .prc-sticky { position: static; }
+
+  /* Secciones con padding */
+  #process, #stack, #testimonials, #cta, footer {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  #services, #projects {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .srv-h, .prj-h { padding-left: 1.5rem; }
+  .srv-scroll, .prj-track { padding: 0 1.5rem 3rem; }
+
+  /* Cards más pequeñas */
+  .sc { min-width: 310px; }
+  .pc { min-width: 310px; }
+
+  /* Footer */
+  .foot-g { grid-template-columns: 1fr; gap: 2.5rem; }
+  .foot-bottom { flex-direction: column; gap: 1.5rem; text-align: center; }
+}
+
+@media (max-width: 600px) {
+  .htitle { font-size: clamp(3.5rem, 18vw, 8rem); }
+  .cta-form { flex-direction: column; }
+  .cta-inp { border-right: 1px solid rgba(0,255,240,.12); border-bottom: none; }
+  .num-grid { grid-template-columns: 1fr 1fr; }
+  .wrap { padding: 0 1.5rem; }
+}

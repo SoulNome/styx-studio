@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Styx Studio — Startup de desarrollo digital en Cali, Colombia. Construimos productos digitales para startups y empresas en LATAM y USA."/>
+  <meta name="author" content="Juan Pablo Toro Correa — Styx Studio"/>
+
+  <title>Styx Studio — Where Code Meets the Eternal</title>
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <!-- Estilos — orden importa -->
+  <link rel="stylesheet" href="css/variables.css"/>
+  <link rel="stylesheet" href="css/base.css"/>
+  <link rel="stylesheet" href="css/nav.css"/>
+  <link rel="stylesheet" href="css/hero.css"/>
+  <link rel="stylesheet" href="css/sections.css"/>
+  <link rel="stylesheet" href="css/footer.css"/>
+</head>
+<body>
+
+  <!-- Barra de progreso de scroll -->
+  <div id="prog"></div>
+
+  <!-- ── Loader ── -->
+  <div id="ldr">
+    <div class="ldr-logo">STYX</div>
+    <div class="ldr-bar"><div class="ldr-fill" id="lf"></div></div>
+    <div class="ldr-pct" id="lpct">0%</div>
+    <div class="ldr-sub">Iniciando el cruce...</div>
+  </div>
+
+  <!-- ── Cursor personalizado ── -->
+  <div id="cur">
+    <div class="cd" id="cd1"></div>
+    <div class="cd" id="cd2"></div>
+    <div class="cd" id="cd3"></div>
+    <div id="cd4"></div>
+  </div>
+
+  <!-- Canvas WebGL — fondo dinámico -->
+  <canvas id="glc"></canvas>
+
+  <!-- ── Menú móvil ── -->
+  <div class="mob" id="mob">
+    <a href="#services"   onclick="cm()">Servicios</a>
+    <a href="#philosophy" onclick="cm()">Nosotros</a>
+    <a href="#process"    onclick="cm()">Proceso</a>
+    <a href="#projects"   onclick="cm()">Proyectos</a>
+    <a href="#cta"        onclick="cm()" style="color:var(--c)">Iniciar Proyecto</a>
+  </div>
+
+  <!-- ── Navegación ── -->
+  <nav id="nav">
+    <a href="#" class="nlogo">STYX<b>&#183;</b>STUDIO</a>
+    <ul class="nlinks">
+      <li><a href="#services">Servicios</a></li>
+      <li><a href="#philosophy">Nosotros</a></li>
+      <li><a href="#process">Proceso</a></li>
+      <li><a href="#projects">Proyectos</a></li>
+    </ul>
+    <a href="#cta" class="ncta">Iniciar Proyecto</a>
+    <div class="burger" id="burg" onclick="tm()">
+      <span id="b1"></span><span id="b2"></span><span id="b3"></span>
+    </div>
+  </nav>
+
+
+  <!-- ══════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="prl" id="prl0"><div class="prl-grid"></div></div>
+    <div class="prl" id="prl1"><div class="prl-orb prl-orb1"></div></div>
+    <div class="prl" id="prl2"><div class="prl-orb prl-orb2"></div></div>
+    <div id="runeL"></div>
+
+    <p class="h-eyebrow">Startup de Desarrollo Digital &#183; Cali, Colombia &#183; Est. 2026</p>
+    <h1 class="htitle" id="ht" aria-label="STYX"></h1>
+    <p class="hsub">Studio</p>
+    <p class="hdesc">Donde el código se convierte en legado. Construimos productos digitales que cruzan el umbral entre lo efímero y lo eterno.</p>
+
+    <div class="hbtns">
+      <a href="#services" class="btn-p">Explorar Servicios</a>
+      <a href="#cta"      class="btn-s">Hablemos</a>
+    </div>
+
+    <div class="h-badges">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        Disponibles ahora
+      </div>
+      <div class="badge">
+        <span class="badge-dot" style="background:var(--g);box-shadow:0 0 8px var(--g)"></span>
+        Cali, Colombia
+      </div>
+      <div class="badge">
+        <span class="badge-dot" style="background:var(--v);box-shadow:0 0 8px var(--v)"></span>
+        Proyectos activos: 3
+      </div>
+    </div>
+
+    <div class="scrl">
+      <div class="scrl-t">Descender</div>
+      <div class="scrl-track"><div class="scrl-fill"></div></div>
+    </div>
+  </section>
+
+
+  <!-- Marquee 1 — Servicios -->
+  <div class="mq">
+    <div class="mq-inner">
+      <span class="mq-item">Desarrollo Web</span>
+      <span class="mq-item">Apps Móviles</span>
+      <span class="mq-item">Productos SaaS</span>
+      <span class="mq-item">Consultoría Tech</span>
+      <span class="mq-item">APIs Backend</span>
+      <span class="mq-item">UI / UX Design</span>
+      <span class="mq-item">Automatización IA</span>
+      <span class="mq-item">Cloud DevOps</span>
+      <!-- duplicado para loop infinito -->
+      <span class="mq-item">Desarrollo Web</span>
+      <span class="mq-item">Apps Móviles</span>
+      <span class="mq-item">Productos SaaS</span>
+      <span class="mq-item">Consultoría Tech</span>
+      <span class="mq-item">APIs Backend</span>
+      <span class="mq-item">UI / UX Design</span>
+      <span class="mq-item">Automatización IA</span>
+      <span class="mq-item">Cloud DevOps</span>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       SERVICIOS
+  ══════════════════════════════════════════ -->
+  <section id="services">
+    <div class="srv-h rv">
+      <p class="eye">Lo que construimos</p>
+      <h2 class="sh">Servicios que <em>trascienden</em></h2>
+      <p class="sp" style="max-width:440px">Sin atajos. Sin deuda técnica. Cada entrega construida para sobrevivir el tiempo.</p>
+    </div>
+
+    <div class="srv-scroll" id="ss">
+
+      <!-- 01 Web & Apps -->
+      <div class="sc">
+        <div class="sc-glow"></div>
+        <p class="sc-n">01 / 05</p>
+        <div class="sc-ico">
+          <div class="sc-ring"></div><div class="sc-ring2"></div>
+          <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.1">
+            <rect x="5" y="13" width="50" height="34" rx="2"/>
+            <path d="M18 28l-9 6 9 6M42 28l9 6-9 6M27 43l7-26"/>
+          </svg>
+        </div>
+        <h3 class="sc-name">Desarrollo Web y Apps</h3>
+        <p class="sc-txt">Plataformas de alto rendimiento: desde landing pages que convierten hasta ecosistemas complejos. Código limpio, arquitectura que escala sin límites.</p>
+        <div class="sc-tags">
+          <span class="sc-tag">Next.js</span><span class="sc-tag">React</span>
+          <span class="sc-tag">Node.js</span><span class="sc-tag">TypeScript</span>
+        </div>
+        <a href="#cta" class="sc-link">Iniciar proyecto &#8594;</a>
+      </div>
+
+      <!-- 02 Apps Móviles -->
+      <div class="sc">
+        <div class="sc-glow"></div>
+        <p class="sc-n">02 / 05</p>
+        <div class="sc-ico">
+          <div class="sc-ring"></div><div class="sc-ring2"></div>
+          <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.1">
+            <rect x="18" y="4" width="24" height="42" rx="3"/>
+            <circle cx="30" cy="40" r="2.5"/>
+            <path d="M22 10h16"/>
+          </svg>
+        </div>
+        <h3 class="sc-name">Apps Móviles</h3>
+        <p class="sc-txt">iOS y Android con una sola base de código. Experiencias que se sienten nativas. Rendimiento máximo, desarrollo ágil.</p>
+        <div class="sc-tags">
+          <span class="sc-tag">React Native</span><span class="sc-tag">Expo</span>
+          <span class="sc-tag">iOS</span><span class="sc-tag">Android</span>
+        </div>
+        <a href="#cta" class="sc-link">Iniciar proyecto &#8594;</a>
+      </div>
+
+      <!-- 03 SaaS -->
+      <div class="sc">
+        <div class="sc-glow"></div>
+        <p class="sc-n">03 / 05</p>
+        <div class="sc-ico">
+          <div class="sc-ring"></div><div class="sc-ring2"></div>
+          <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.1">
+            <rect x="5" y="5" width="22" height="22" rx="2"/>
+            <rect x="33" y="5" width="22" height="22" rx="2"/>
+            <rect x="5" y="33" width="22" height="22" rx="2"/>
+            <path d="M44 33v22M33 44h22"/>
+          </svg>
+        </div>
+        <h3 class="sc-name">Productos SaaS</h3>
+        <p class="sc-txt">De la idea a producción. Auth, billing, multi-tenancy, dashboards. MVP en semanas. También escalamos lo que ya tienes sin romper nada.</p>
+        <div class="sc-tags">
+          <span class="sc-tag">MVP</span><span class="sc-tag">Stripe</span>
+          <span class="sc-tag">Multi-tenant</span><span class="sc-tag">Auth</span>
+        </div>
+        <a href="#cta" class="sc-link">Iniciar proyecto &#8594;</a>
+      </div>
+
+      <!-- 04 Consultoría -->
+      <div class="sc">
+        <div class="sc-glow"></div>
+        <p class="sc-n">04 / 05</p>
+        <div class="sc-ico">
+          <div class="sc-ring"></div><div class="sc-ring2"></div>
+          <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.1">
+            <circle cx="30" cy="30" r="24"/>
+            <path d="M30 6C20 6 12 17 12 30s8 24 18 24 18-11 18-24S40 6 30 6z"/>
+            <path d="M6 30h48M30 6v48"/>
+          </svg>
+        </div>
+        <h3 class="sc-name">Consultoría Tech</h3>
+        <p class="sc-txt">Tu CTO externo. Arquitectura, estrategia, decisiones que no te van a costar cara en 2 años. Sin sesgos, con criterio, con piel en el juego.</p>
+        <div class="sc-tags">
+          <span class="sc-tag">Arquitectura</span><span class="sc-tag">CTO Externo</span>
+          <span class="sc-tag">Auditoría</span>
+        </div>
+        <a href="#cta" class="sc-link">Iniciar proyecto &#8594;</a>
+      </div>
+
+      <!-- 05 IA -->
+      <div class="sc">
+        <div class="sc-glow"></div>
+        <p class="sc-n">05 / 05</p>
+        <div class="sc-ico">
+          <div class="sc-ring"></div><div class="sc-ring2"></div>
+          <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.1">
+            <path d="M10 30a20 20 0 0 1 40 0"/>
+            <path d="M16 38a16 16 0 0 1 28 0"/>
+            <circle cx="30" cy="30" r="4"/>
+            <path d="M30 6v8M30 46v8M6 30h8M46 30h8"/>
+          </svg>
+        </div>
+        <h3 class="sc-name">IA y Automatización</h3>
+        <p class="sc-txt">Workflows inteligentes que eliminan trabajo manual. LLMs, chatbots de negocio, pipelines con IA. Lo que tarda horas, tarda segundos.</p>
+        <div class="sc-tags">
+          <span class="sc-tag">OpenAI</span><span class="sc-tag">Claude API</span>
+          <span class="sc-tag">LangChain</span><span class="sc-tag">n8n</span>
+        </div>
+        <a href="#cta" class="sc-link">Iniciar proyecto &#8594;</a>
+      </div>
+
+    </div><!-- /srv-scroll -->
+
+    <div class="srv-sb">
+      <div class="srv-sb-n">01</div>
+      <div class="srv-sb-track"><div class="srv-sb-thumb" id="sst" style="width:18%"></div></div>
+      <div class="srv-sb-n">05</div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       FILOSOFÍA
+  ══════════════════════════════════════════ -->
+  <section id="philosophy">
+    <div class="phi">
+
+      <!-- Ilustración centauro -->
+      <div class="phi-v rv-l">
+        <div class="orbit"><div class="orbit-dot"></div></div>
+        <div class="orbit"><div class="orbit-dot"></div></div>
+        <div class="orbit"><div class="orbit-dot"></div></div>
+
+        <svg id="csv" width="380" height="480" viewBox="0 0 380 480" fill="none">
+          <defs>
+            <linearGradient id="sg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%"   stop-color="#00fff0" stop-opacity=".95"/>
+              <stop offset="50%"  stop-color="#60c0ff" stop-opacity=".75"/>
+              <stop offset="80%"  stop-color="#b44fff" stop-opacity=".55"/>
+              <stop offset="100%" stop-color="#00fff0" stop-opacity=".25"/>
+            </linearGradient>
+            <filter id="gf"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <filter id="gf2"><feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <!-- cuerpo / fondo -->
+          <circle cx="190" cy="240" r="170" stroke="url(#sg)" stroke-width=".4" fill="none" opacity=".12"/>
+          <circle cx="190" cy="240" r="140" stroke="#b44fff" stroke-width=".3" fill="none" opacity=".07"/>
+          <!-- suelo -->
+          <line x1="50" y1="305" x2="340" y2="305" stroke="url(#sg)" stroke-width=".3" stroke-dasharray="2 8" opacity=".22"/>
+          <line x1="50" y1="325" x2="340" y2="325" stroke="url(#sg)" stroke-width=".3" stroke-dasharray="2 8" opacity=".15"/>
+          <line x1="50" y1="345" x2="340" y2="345" stroke="url(#sg)" stroke-width=".3" stroke-dasharray="2 8" opacity=".1"/>
+          <!-- cuerpo caballo -->
+          <ellipse cx="200" cy="348" rx="130" ry="68" stroke="url(#sg)" stroke-width="1.4" fill="none" opacity=".75" filter="url(#gf)"/>
+          <path d="M105 362 Q200 390 298 362" stroke="url(#sg)" stroke-width=".7" fill="none" opacity=".28"/>
+          <!-- patas -->
+          <line x1="130" y1="404" x2="112" y2="464" stroke="url(#sg)" stroke-width="1.4"/>
+          <line x1="165" y1="412" x2="154" y2="470" stroke="url(#sg)" stroke-width="1.4"/>
+          <line x1="234" y1="412" x2="244" y2="470" stroke="url(#sg)" stroke-width="1.4"/>
+          <line x1="268" y1="404" x2="282" y2="464" stroke="url(#sg)" stroke-width="1.4"/>
+          <!-- cascos -->
+          <ellipse cx="112" cy="466" rx="10" ry="5" fill="#00fff0" opacity=".65" filter="url(#gf)"/>
+          <ellipse cx="154" cy="472" rx="10" ry="5" fill="#00fff0" opacity=".65" filter="url(#gf)"/>
+          <ellipse cx="244" cy="472" rx="10" ry="5" fill="#00fff0" opacity=".65" filter="url(#gf)"/>
+          <ellipse cx="282" cy="466" rx="10" ry="5" fill="#00fff0" opacity=".65" filter="url(#gf)"/>
+          <!-- cola -->
+          <path d="M326 318 C360 306 372 338 358 370 C346 400 328 396 322 418" stroke="url(#sg)" stroke-width="1.5" fill="none" opacity=".6"/>
+          <!-- torso humano -->
+          <path d="M174 294 L168 206 L192 158 L212 206 L206 294" stroke="url(#sg)" stroke-width="1.6" fill="none" filter="url(#gf)"/>
+          <path d="M172 230 C172 214 210 214 210 230" stroke="url(#sg)" stroke-width="1" fill="none" opacity=".5"/>
+          <path d="M176 252 C176 242 208 242 208 252" stroke="url(#sg)" stroke-width=".7" fill="none" opacity=".35"/>
+          <!-- brazos -->
+          <path d="M168 180 L128 202 L114 238" stroke="url(#sg)" stroke-width="1.6" fill="none"/>
+          <path d="M114 238 L98 274 L86 292"   stroke="url(#sg)" stroke-width="1.6" fill="none"/>
+          <!-- brazo derecho + lanza -->
+          <path d="M212 180 L252 202 L270 238" stroke="url(#sg)" stroke-width="1.6" fill="none"/>
+          <path d="M270 238 L290 206 L308 172 L320 132" stroke="url(#sg)" stroke-width="1.6" fill="none"/>
+          <line x1="320" y1="132" x2="340" y2="36" stroke="#00fff0" stroke-width="2" filter="url(#gf2)"/>
+          <polygon points="340,36 330,62 350,62" fill="#00fff0" opacity=".95" filter="url(#gf2)"/>
+          <circle cx="340" cy="36" r="10" fill="#00fff0" opacity=".3" filter="url(#gf2)"/>
+          <circle cx="340" cy="36" r="20" stroke="#00fff0" stroke-width=".6" fill="none" opacity=".18"/>
+          <!-- cuello + cabeza -->
+          <path d="M188 164 L194 144" stroke="url(#sg)" stroke-width="1.4" filter="url(#gf)"/>
+          <circle cx="196" cy="126" r="30" stroke="url(#sg)" stroke-width="1.6" fill="none" filter="url(#gf)"/>
+          <circle cx="186" cy="120" r="4" fill="#00fff0" opacity=".75" filter="url(#gf)"/>
+          <circle cx="206" cy="120" r="4" fill="#00fff0" opacity=".75" filter="url(#gf)"/>
+          <path d="M188 136 Q196 141 204 136" stroke="url(#sg)" stroke-width="1" fill="none" opacity=".48"/>
+          <!-- casco/corona -->
+          <path d="M170 112 C178 88 214 88 222 112" stroke="url(#sg)" stroke-width="1.2" fill="none" opacity=".62"/>
+          <line x1="196" y1="96" x2="196" y2="62" stroke="#b44fff" stroke-width="1.8" opacity=".8"/>
+          <circle cx="196" cy="60" r="5" fill="#b44fff" opacity=".95" filter="url(#gf2)"/>
+          <circle cx="196" cy="60" r="10" stroke="#b44fff" stroke-width=".6" fill="none" opacity=".4"/>
+        </svg>
+      </div>
+
+      <!-- Texto filosofía -->
+      <div class="rv-r">
+        <p class="eye">Filosofía</p>
+        <h2 class="sh">El umbral entre<br/>dos <em>mundos</em></h2>
+        <p class="sp">Como el centauro, existimos en la intersección exacta. Mitad ingeniería de precisión, mitad visión creativa. No somos solo devs, somos arquitectos de experiencias que perduran.</p>
+        <p class="sp" style="margin-top:1.2rem">El río Styx no era una barrera. Era el umbral definitivo, donde lo efímero se vuelve eterno. Cada proyecto que sale de nuestro estudio cruza ese umbral.</p>
+
+        <div class="phi-pills">
+          <div class="phi-pill"><span>Calidad sin compromiso</span></div>
+          <div class="phi-pill"><span>Transparencia total</span></div>
+          <div class="phi-pill"><span>Código que escala</span></div>
+          <div class="phi-pill"><span>Resultados, no reportes</span></div>
+        </div>
+
+        <div class="phi-quote">
+          <div class="phi-qmark">"</div>
+          <p>"El código bien escrito no necesita comentarios. Habla solo, vive solo, escala solo."</p>
+          <cite>— Styx Studio, Cali Colombia</cite>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Marquee 2 — Stack -->
+  <div class="mq">
+    <div class="mq-inner r">
+      <span class="mq-item">React</span><span class="mq-item">Next.js</span>
+      <span class="mq-item">TypeScript</span><span class="mq-item">Node.js</span>
+      <span class="mq-item">Python</span><span class="mq-item">PostgreSQL</span>
+      <span class="mq-item">AWS</span><span class="mq-item">Docker</span>
+      <span class="mq-item">Stripe</span><span class="mq-item">OpenAI</span>
+      <span class="mq-item">Claude API</span><span class="mq-item">Prisma</span>
+      <!-- duplicado -->
+      <span class="mq-item">React</span><span class="mq-item">Next.js</span>
+      <span class="mq-item">TypeScript</span><span class="mq-item">Node.js</span>
+      <span class="mq-item">Python</span><span class="mq-item">PostgreSQL</span>
+      <span class="mq-item">AWS</span><span class="mq-item">Docker</span>
+      <span class="mq-item">Stripe</span><span class="mq-item">OpenAI</span>
+      <span class="mq-item">Claude API</span><span class="mq-item">Prisma</span>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       NÚMEROS
+  ══════════════════════════════════════════ -->
+  <div id="numbers">
+    <div class="num-grid">
+      <!-- Gradiente compartido para los arcos -->
+      <svg width="0" height="0" style="position:absolute">
+        <defs>
+          <linearGradient id="rg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%"   stop-color="#00fff0"/>
+            <stop offset="100%" stop-color="#b44fff"/>
+          </linearGradient>
+        </defs>
+      </svg>
+
+      <div class="nc rv">
+        <div class="nc-ring">
+          <svg width="100" height="100" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="43"/>
+            <circle class="arc" cx="50" cy="50" r="43"/>
+          </svg>
+          <div class="nc-val" id="nv1">0+</div>
+        </div>
+        <div class="nc-label">Proyectos Entregados</div>
+        <div class="nc-line"></div>
+      </div>
+
+      <div class="nc rv" style="transition-delay:.15s">
+        <div class="nc-ring">
+          <svg width="100" height="100" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="43"/>
+            <circle class="arc" cx="50" cy="50" r="43"/>
+          </svg>
+          <div class="nc-val" id="nv2">0%</div>
+        </div>
+        <div class="nc-label">Tasa de Satisfacción</div>
+        <div class="nc-line"></div>
+      </div>
+
+      <div class="nc rv" style="transition-delay:.3s">
+        <div class="nc-ring">
+          <svg width="100" height="100" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="43"/>
+            <circle class="arc" cx="50" cy="50" r="43"/>
+          </svg>
+          <div class="nc-val" id="nv3">0+</div>
+        </div>
+        <div class="nc-label">SaaS Lanzados</div>
+        <div class="nc-line"></div>
+      </div>
+
+      <div class="nc rv" style="transition-delay:.45s">
+        <div class="nc-ring">
+          <svg width="100" height="100" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="43"/>
+            <circle class="arc" cx="50" cy="50" r="43"/>
+          </svg>
+          <div class="nc-val" id="nv4">0x</div>
+        </div>
+        <div class="nc-label">Velocidad vs Promedio</div>
+        <div class="nc-line"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       PROCESO
+  ══════════════════════════════════════════ -->
+  <section id="process">
+    <div class="prc">
+      <div class="rv">
+        <p class="eye">Cómo trabajamos</p>
+        <h2 class="sh">El proceso <em>sin misterios</em></h2>
+      </div>
+
+      <div class="prc-g">
+        <div class="prc-sticky rv-l">
+          <p class="sp" style="max-width:320px">Ciclos cortos, entregables reales. Ves progreso desde la primera semana. Sin promesas vacías, sin sorpresas al final.</p>
+          <br/>
+          <p class="sp" style="font-size:.8rem;max-width:320px">Metodología ágil adaptada a startups, sin el overhead de las grandes consultoras, con la precisión de un equipo senior.</p>
+        </div>
+
+        <div class="prc-steps rv-r">
+          <div class="prc-vline" id="pvl"></div>
+
+          <div class="ps act" id="ps1">
+            <div class="ps-dot"><div class="ps-di"></div></div>
+            <div>
+              <p class="ps-ph">Fase 01 — Diagnóstico</p>
+              <h3 class="ps-h">Exploración y Estrategia</h3>
+              <p class="ps-p">Entendemos tu negocio, usuarios y objetivos antes de escribir una sola línea. La mayoría de los problemas técnicos son problemas de estrategia disfrazados.</p>
+            </div>
+          </div>
+
+          <div class="ps" id="ps2">
+            <div class="ps-dot"><div class="ps-di"></div></div>
+            <div>
+              <p class="ps-ph">Fase 02 — Arquitectura</p>
+              <h3 class="ps-h">Diseño y Estructura</h3>
+              <p class="ps-p">Arquitectura técnica, stack y flujo UX. Las decisiones que van a importar en 2 años. Con tu validación en cada paso.</p>
+            </div>
+          </div>
+
+          <div class="ps" id="ps3">
+            <div class="ps-dot"><div class="ps-di"></div></div>
+            <div>
+              <p class="ps-ph">Fase 03 — Construcción</p>
+              <h3 class="ps-h">Desarrollo Iterativo</h3>
+              <p class="ps-p">Sprints de dos semanas con demos visibles. Daily async, code reviews, entregables reales. No trabajamos en la oscuridad.</p>
+            </div>
+          </div>
+
+          <div class="ps" id="ps4">
+            <div class="ps-dot"><div class="ps-di"></div></div>
+            <div>
+              <p class="ps-ph">Fase 04 — Lanzamiento</p>
+              <h3 class="ps-h">Deploy y Escala</h3>
+              <p class="ps-p">CI/CD, monitoreo, documentación completa. Tu producto sale listo para crecer. Y seguimos contigo después del go-live.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       STACK
+  ══════════════════════════════════════════ -->
+  <section id="stack">
+    <div class="stk-g">
+      <div class="rv">
+        <p class="eye">Arsenal</p>
+        <h2 class="sh">Las herramientas <em>del oficio</em></h2>
+      </div>
+      <div class="stk-chips rv" style="transition-delay:.2s">
+        <span class="chip">Next.js</span>
+        <span class="chip">React</span>
+        <span class="chip">TypeScript</span>
+        <span class="chip">Node.js</span>
+        <span class="chip">Python</span>
+        <span class="chip">FastAPI</span>
+        <span class="chip">PostgreSQL</span>
+        <span class="chip">MongoDB</span>
+        <span class="chip">Redis</span>
+        <span class="chip">AWS</span>
+        <span class="chip">GCP</span>
+        <span class="chip">Vercel</span>
+        <span class="chip">Docker</span>
+        <span class="chip">Kubernetes</span>
+        <span class="chip">Stripe</span>
+        <span class="chip">Prisma</span>
+        <span class="chip">GraphQL</span>
+        <span class="chip">tRPC</span>
+        <span class="chip">React Native</span>
+        <span class="chip">Expo</span>
+        <span class="chip">Tailwind</span>
+        <span class="chip">Framer Motion</span>
+        <span class="chip">OpenAI</span>
+        <span class="chip">Claude API</span>
+        <span class="chip">LangChain</span>
+        <span class="chip">Figma</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       PROYECTOS
+  ══════════════════════════════════════════ -->
+  <section id="projects">
+    <div class="prj-h rv">
+      <p class="eye">Trabajo seleccionado</p>
+      <h2 class="sh">Proyectos que <em>hablan por sí solos</em></h2>
+    </div>
+
+    <div class="prj-track" id="pt">
+
+      <!-- Proyecto 1 -->
+      <div class="pc">
+        <div class="pc-img" style="background:linear-gradient(135deg,#050c1a,#0a1428)">
+          <svg width="280" height="200" viewBox="0 0 280 200" fill="none">
+            <rect x="15" y="15" width="250" height="170" rx="3" stroke="rgba(0,255,240,.12)"/>
+            <rect x="25" y="25" width="230" height="30" rx="2" fill="rgba(0,255,240,.04)" stroke="rgba(0,255,240,.08)"/>
+            <rect x="25" y="65" width="105" height="110" rx="2" fill="rgba(0,255,240,.03)" stroke="rgba(0,255,240,.07)"/>
+            <rect x="140" y="65" width="115" height="50" rx="2" fill="rgba(180,79,255,.04)" stroke="rgba(180,79,255,.08)"/>
+            <rect x="140" y="125" width="115" height="50" rx="2" fill="rgba(0,255,240,.03)" stroke="rgba(0,255,240,.07)"/>
+            <rect x="35" y="95" width="85" height="5" rx="2.5" fill="rgba(0,255,240,.18)"/>
+            <circle cx="42" cy="37" r="7" fill="rgba(0,255,240,.25)"/>
+            <circle cx="58" cy="37" r="7" fill="rgba(180,79,255,.25)"/>
+          </svg>
+        </div>
+        <div class="pc-body">
+          <p class="pc-tag">SaaS B2B Enterprise</p>
+          <h3 class="pc-h">Plataforma de Gestión Empresarial</h3>
+          <p class="pc-p">Dashboard multi-tenant con planes desde freemium hasta enterprise. Gestión de equipos, proyectos y facturación. +200 empresas en LATAM.</p>
+          <div class="pc-foot">
+            <span class="pc-tech">Next.js · PostgreSQL · Stripe</span>
+            <a href="#cta" class="pc-btn">Ver caso</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Proyecto 2 -->
+      <div class="pc">
+        <div class="pc-img" style="background:linear-gradient(135deg,#07040f,#100620)">
+          <svg width="280" height="200" viewBox="0 0 280 200" fill="none">
+            <rect x="100" y="10" width="80" height="150" rx="10" stroke="rgba(180,79,255,.2)"/>
+            <rect x="110" y="24" width="60" height="100" rx="3" fill="rgba(180,79,255,.04)" stroke="rgba(180,79,255,.08)"/>
+            <circle cx="140" cy="143" r="6" stroke="rgba(180,79,255,.3)"/>
+            <rect x="116" y="32" width="48" height="7" rx="3.5" fill="rgba(180,79,255,.18)"/>
+            <path d="M122 72 L134 64 L146 70 L158 60" stroke="#00fff0" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="pc-body">
+          <p class="pc-tag">App Móvil B2C · IA</p>
+          <h3 class="pc-h">App de Finanzas Personales</h3>
+          <p class="pc-p">iOS y Android con categorización de gastos por IA. 10k+ usuarios en 3 meses. Rating 4.9 en stores. Alertas inteligentes en tiempo real.</p>
+          <div class="pc-foot">
+            <span class="pc-tech">React Native · Python · OpenAI</span>
+            <a href="#cta" class="pc-btn">Ver caso</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Proyecto 3 -->
+      <div class="pc">
+        <div class="pc-img" style="background:linear-gradient(135deg,#050812,#080d20)">
+          <svg width="280" height="200" viewBox="0 0 280 200" fill="none">
+            <rect x="15" y="15" width="250" height="170" rx="3" stroke="rgba(0,255,240,.08)"/>
+            <defs>
+              <linearGradient id="cg" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%"   stop-color="#00fff0"/>
+                <stop offset="100%" stop-color="#b44fff"/>
+              </linearGradient>
+            </defs>
+            <path d="M30 150 L75 120 L120 138 L165 100 L210 118 L250 90" stroke="url(#cg)" stroke-width="2.5" fill="none"/>
+            <circle cx="75"  cy="120" r="4" fill="#00fff0"/>
+            <circle cx="165" cy="100" r="4" fill="#00fff0"/>
+            <circle cx="250" cy="90"  r="4" fill="#00fff0"/>
+          </svg>
+        </div>
+        <div class="pc-body">
+          <p class="pc-tag">E-commerce D2C · IA</p>
+          <h3 class="pc-h">Tienda con Recomendaciones IA</h3>
+          <p class="pc-p">Motor de recomendaciones por IA y checkout ultra-optimizado. Conversión +34% vs versión anterior en 60 días de operación.</p>
+          <div class="pc-foot">
+            <span class="pc-tech">Next.js · Stripe · Claude API</span>
+            <a href="#cta" class="pc-btn">Ver caso</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Proyecto 4 -->
+      <div class="pc">
+        <div class="pc-img" style="background:linear-gradient(135deg,#060a10,#0c1218)">
+          <svg width="280" height="200" viewBox="0 0 280 200" fill="none">
+            <rect x="15"  y="15"  width="120" height="80" rx="2" fill="rgba(0,255,240,.03)"   stroke="rgba(0,255,240,.08)"/>
+            <rect x="145" y="15"  width="120" height="80" rx="2" fill="rgba(180,79,255,.03)"  stroke="rgba(180,79,255,.07)"/>
+            <rect x="15"  y="105" width="75"  height="80" rx="2" fill="rgba(0,255,240,.03)"   stroke="rgba(0,255,240,.07)"/>
+            <rect x="100" y="105" width="75"  height="80" rx="2" fill="rgba(0,255,240,.03)"   stroke="rgba(0,255,240,.07)"/>
+            <rect x="185" y="105" width="80"  height="80" rx="2" fill="rgba(180,79,255,.03)"  stroke="rgba(180,79,255,.07)"/>
+          </svg>
+        </div>
+        <div class="pc-body">
+          <p class="pc-tag">Dashboard Analytics B2B</p>
+          <h3 class="pc-h">Panel de Business Intelligence</h3>
+          <p class="pc-p">BI dashboard en tiempo real con integración a múltiples fuentes. Visualizaciones interactivas y exportación automática de reportes.</p>
+          <div class="pc-foot">
+            <span class="pc-tech">React · Python · PostgreSQL</span>
+            <a href="#cta" class="pc-btn">Ver caso</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /prj-track -->
+    <p class="prj-hint">Arrastra para explorar</p>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       TESTIMONIOS
+  ══════════════════════════════════════════ -->
+  <section id="testimonials">
+    <div class="tst rv">
+      <p class="eye" style="justify-content:center">Lo que dicen</p>
+      <h2 class="sh" style="text-align:center">Clientes que <em>cruzaron el umbral</em></h2>
+
+      <div class="tst-slider">
+        <div class="tst-track" id="tt">
+
+          <div class="tcard">
+            <div class="tc-inner">
+              <div class="tc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p class="tc-q">"Entregaron en tiempo, sin excusas y el resultado superó lo que esperábamos. El código es limpio, escalable, y el equipo entiende el negocio, no solo la tecnología."</p>
+              <div class="tc-ava">CM</div>
+              <p class="tc-auth">Carlos Mendoza</p>
+              <p class="tc-role">CTO · FinTech Bogotá</p>
+            </div>
+          </div>
+
+          <div class="tcard">
+            <div class="tc-inner">
+              <div class="tc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p class="tc-q">"Habíamos trabajado con varias agencias y Styx Studio fue diferente desde el primer día. No solo cumplen, proponen, cuestionan y mejoran lo que llevas."</p>
+              <div class="tc-ava">VT</div>
+              <p class="tc-auth">Valentina Torres</p>
+              <p class="tc-role">Founder · EdTech Startup</p>
+            </div>
+          </div>
+
+          <div class="tcard">
+            <div class="tc-inner">
+              <div class="tc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p class="tc-q">"Nuestro MVP salió en 6 semanas. Los inversionistas quedaron impresionados. El producto se veía y sentía production-ready desde el primer demo."</p>
+              <div class="tc-ava">AR</div>
+              <p class="tc-auth">Andrés Ríos</p>
+              <p class="tc-role">CEO · Startup Medellín</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="tst-dots" id="td"></div>
+      <div class="tst-nav">
+        <button class="tst-btn" id="tp">&#8592;</button>
+        <button class="tst-btn" id="tn">&#8594;</button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       CTA — CONTACTO
+  ══════════════════════════════════════════ -->
+  <section id="cta">
+    <div class="cta-cosmos">
+      <div class="cr" style="width:800px;height:800px;animation:spin 50s linear infinite"></div>
+      <div class="cr" style="width:560px;height:560px;border-color:rgba(180,79,255,.04);animation:spin 34s linear infinite reverse"></div>
+      <div class="cr" style="width:340px;height:340px;animation:spin 20s linear infinite"></div>
+    </div>
+
+    <div class="wrap" style="position:relative;z-index:1">
+      <div class="rv">
+        <p class="cta-eye">Listo para cruzar</p>
+        <h2 class="cta-h">
+          <span class="cta-l1">Tu próximo producto</span>
+          <span class="cta-l2">empieza aquí.</span>
+        </h2>
+        <p class="cta-sub">Deja tu email. Te respondemos en menos de 24 horas. Sin formularios genéricos, sin demos aburridas.</p>
+
+        <div class="cta-form">
+          <input class="cta-inp" type="email" placeholder="tu@startup.com" id="cei"/>
+          <button class="cta-btn" id="cb">
+            <span class="cta-btn-t">Cruzar el umbral</span>
+          </button>
+        </div>
+
+        <p class="cta-note">Sin spam. Sin presión. Solo un mensaje real de nuestro equipo.</p>
+
+        <div class="cta-trust">
+          <div class="trust-item"><span class="trust-icon">&#9889;</span>Respuesta en 24h</div>
+          <div class="trust-item"><span class="trust-icon">&#128274;</span>100% confidencial</div>
+          <div class="trust-item"><span class="trust-icon">&#10022;</span>Sin compromiso</div>
+          <div class="trust-item"><span class="trust-icon">&#127758;</span>LATAM y USA</div>
+        </div>
+
+        <!-- Contacto directo -->
+        <div class="contact-info">
+          <div class="contact-item">
+            <span>&#128222;</span>
+            <a href="tel:+573143173801">+57 314 317 3801</a>
+          </div>
+          <!-- El email se agrega cuando Juan Pablo lo proporcione -->
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════ -->
+  <footer>
+    <div class="foot-g">
+
+      <!-- Columna 1: Marca -->
+      <div>
+        <div class="flogo">STYX<b>&#183;</b>STUDIO</div>
+        <div class="ftag">Where code meets the eternal</div>
+        <p class="fdesc">Startup de desarrollo digital en Cali, Colombia. Construimos productos que trascienden para startups y empresas en LATAM y USA.</p>
+        <div class="fsoc-row">
+          <a href="#" class="fsoc" aria-label="GitHub">GH</a>
+          <a href="#" class="fsoc" aria-label="LinkedIn">LI</a>
+          <a href="#" class="fsoc" aria-label="Twitter/X">TW</a>
+          <a href="#" class="fsoc" aria-label="Instagram">IG</a>
+        </div>
+      </div>
+
+      <!-- Columna 2: Servicios -->
+      <div>
+        <p class="fl-title">Servicios</p>
+        <ul class="fl-list">
+          <li><a href="#services">Desarrollo Web y Apps</a></li>
+          <li><a href="#services">Apps Móviles</a></li>
+          <li><a href="#services">Productos SaaS</a></li>
+          <li><a href="#services">Consultoría Tech</a></li>
+          <li><a href="#services">IA y Automatización</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 3: Empresa -->
+      <div>
+        <p class="fl-title">Empresa</p>
+        <ul class="fl-list">
+          <li><a href="#philosophy">Nosotros</a></li>
+          <li><a href="#process">Proceso</a></li>
+          <li><a href="#projects">Proyectos</a></li>
+          <li><a href="#cta">Contacto</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="foot-bottom">
+      <div class="fcopy">&copy; 2025 Styx Studio &middot; Cali, Colombia &middot; Todos los derechos reservados</div>
+      <a href="#hero" class="fback">Volver arriba &#8593;</a>
+    </div>
+  </footer>
+
+
+  <!-- ── Scripts — orden importa ── -->
+  <script src="js/webgl-bg.js"></script>
+  <script src="js/cursor.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/ui.js"></script>
+
+</body>
+</html>

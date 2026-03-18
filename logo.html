@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Styx Studio — Brand Identity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #020308;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: 'Cinzel', serif;
+      overflow-x: hidden;
+    }
+
+    /* Glow radial de fondo */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(0,255,240,.04), transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Grain animado */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: -50px;
+      width: calc(100% + 100px);
+      height: calc(100% + 100px);
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: .02;
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    /* Línea de scan */
+    .scan {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(0,255,240,.4), transparent);
+      animation: scanDown 4s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 50;
+    }
+    @keyframes scanDown {
+      0%   { top: -2px; opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: .5; }
+      100% { top: 100vh; opacity: 0; }
+    }
+
+    /* ── Stage principal ── */
+    .stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 60px;
+      position: relative;
+      z-index: 1;
+      padding: 4rem 2rem;
+    }
+
+    /* ── Logo Mark: anillos + icono ── */
+    .logo-mark {
+      position: relative;
+      width: 220px; height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(0,255,240,.12);
+    }
+    .ring1 { width: 220px; height: 220px; animation: spinR 20s linear infinite; }
+    .ring2 { width: 180px; height: 180px; border-color: rgba(180,79,255,.1); animation: spinR 14s linear infinite reverse; }
+    .ring3 { width: 140px; height: 140px; border-color: rgba(0,255,240,.07); animation: spinR 9s linear infinite; }
+
+    .rdot { position: absolute; border-radius: 50%; }
+    .ring1 .rdot { width: 6px; height: 6px; background: #00fff0; box-shadow: 0 0 15px #00fff0; top: 50%; left: -3px; transform: translateY(-50%); }
+    .ring2 .rdot { width: 5px; height: 5px; background: #b44fff; box-shadow: 0 0 12px #b44fff; top: -2.5px; left: 50%; transform: translateX(-50%); }
+    .ring3 .rdot { width: 4px; height: 4px; background: #f0c040; box-shadow: 0 0 10px #f0c040; bottom: -2px; left: 50%; transform: translateX(-50%); }
+
+    @keyframes spinR { to { transform: rotate(360deg); } }
+
+    .icon-bg {
+      position: absolute;
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 40% 35%, rgba(0,255,240,.08), rgba(180,79,255,.04), transparent 70%);
+      border: 1px solid rgba(0,255,240,.15);
+      box-shadow: 0 0 40px rgba(0,255,240,.08), inset 0 0 30px rgba(0,255,240,.04);
+    }
+
+    /* Centauro SVG */
+    .icon-svg {
+      position: relative; z-index: 2;
+      animation: iconFloat 6s ease-in-out infinite, glowPulse 3s ease-in-out infinite;
+    }
+    .icon-svg path, .icon-svg line, .icon-svg ellipse,
+    .icon-svg circle, .icon-svg polygon {
+      stroke-dasharray: 600;
+      stroke-dashoffset: 600;
+      animation: drawStroke 2.5s cubic-bezier(.16,1,.3,1) forwards;
+    }
+    @keyframes drawStroke { to { stroke-dashoffset: 0; } }
+    @keyframes iconFloat {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-8px); }
+    }
+    @keyframes glowPulse {
+      0%, 100% { filter: drop-shadow(0 0 12px rgba(0,255,240,.5)); }
+      50%       { filter: drop-shadow(0 0 30px rgba(0,255,240,.9)) drop-shadow(0 0 60px rgba(0,255,240,.3)); }
+    }
+
+    /* Partículas orbitales */
+    .particles { position: absolute; inset: 0; pointer-events: none; }
+    .particle  { position: absolute; border-radius: 50%; animation: particleOrbit linear infinite; }
+    @keyframes particleOrbit {
+      0%   { transform: rotate(0deg)   translateX(var(--r)) rotate(0deg);    opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: .6; }
+      100% { transform: rotate(360deg) translateX(var(--r)) rotate(-360deg); opacity: 0; }
+    }
+
+    /* ── Wordmark ── */
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .styx-word {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 5rem;
+      font-weight: 900;
+      letter-spacing: .08em;
+      line-height: 1;
+      display: flex;
+      gap: .02em;
+    }
+    .styx-char {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(40px) rotateX(-80deg);
+      animation: charIn .7s cubic-bezier(.16,1,.3,1) forwards;
+      background: linear-gradient(160deg, #ffffff 0%, #b8e8ff 30%, #00fff0 65%, #b44fff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 20px rgba(0,255,240,.35));
+    }
+    @keyframes charIn { to { opacity: 1; transform: translateY(0) rotateX(0); } }
+
+    .studio-word {
+      font-family: 'Cinzel', serif;
+      font-size: 1.05rem;
+      letter-spacing: .7em;
+      color: rgba(160,200,220,.6);
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp .8s 1.6s forwards;
+      padding-left: .7em;
+    }
+
+    .tagline {
+      font-size: .55rem;
+      letter-spacing: .55em;
+      color: rgba(0,255,240,.3);
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp .8s 2s forwards;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .tagline::before, .tagline::after {
+      content: '';
+      width: 30px; height: 1px;
+      background: linear-gradient(to right, transparent, rgba(0,255,240,.3));
+    }
+    .tagline::after { transform: scaleX(-1); }
+
+    .divider {
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, transparent, rgba(0,255,240,.25), transparent);
+      opacity: 0;
+      animation: fadeUp .8s 1.8s forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Controles de variante ── */
+    .controls {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+      opacity: 0;
+      animation: fadeUp .8s 2.4s forwards;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .ctrl-btn {
+      font-family: 'Cinzel', serif;
+      font-size: .55rem;
+      letter-spacing: .2em;
+      padding: .6rem 1.4rem;
+      border: 1px solid rgba(0,255,240,.2);
+      color: rgba(0,255,240,.7);
+      background: transparent;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: all .3s;
+      clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+    }
+    .ctrl-btn:hover { background: rgba(0,255,240,.08); border-color: rgba(0,255,240,.5); color: #00fff0; box-shadow: 0 0 20px rgba(0,255,240,.15); }
+    .ctrl-btn.active { background: rgba(0,255,240,.12); border-color: #00fff0; color: #00fff0; }
+
+    /* ── Previsualización variantes ── */
+    .variations {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      opacity: 0;
+      animation: fadeUp .8s 2.6s forwards;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .var-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: all .3s;
+      padding: 20px;
+    }
+    .var-item:hover { transform: translateY(-4px); }
+    .var-label { font-size: .5rem; letter-spacing: .3em; color: #5a6a88; text-transform: uppercase; }
+
+    /* Versión dark */
+    .var-mono {
+      background: #020308;
+      border: 1px solid rgba(0,255,240,.1);
+      border-radius: 4px;
+      padding: 16px 24px;
+    }
+    .var-mono .styx-mini { font-family: 'Cinzel Decorative', serif; font-size: 1.4rem; font-weight: 900; letter-spacing: .08em; color: #00fff0; text-shadow: 0 0 20px rgba(0,255,240,.5); }
+    .var-mono .studio-mini { font-family: 'Cinzel', serif; font-size: .45rem; letter-spacing: .5em; color: rgba(0,255,240,.4); text-transform: uppercase; text-align: center; padding-left: .5em; }
+
+    /* Versión light */
+    .var-light {
+      background: #f0f4f8;
+      border-radius: 4px;
+      padding: 16px 24px;
+    }
+    .var-light .styx-mini { font-family: 'Cinzel Decorative', serif; font-size: 1.4rem; font-weight: 900; letter-spacing: .08em; background: linear-gradient(135deg, #020308, #1a2040); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .var-light .studio-mini { font-family: 'Cinzel', serif; font-size: .45rem; letter-spacing: .5em; color: #5a6a88; text-transform: uppercase; text-align: center; padding-left: .5em; }
+
+    /* Solo icono */
+    .var-icon {
+      background: #020308;
+      border: 1px solid rgba(0,255,240,.1);
+      border-radius: 50%;
+      width: 70px; height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sep { width: 1px; height: 60px; background: linear-gradient(to bottom, transparent, rgba(0,255,240,.15), transparent); }
+
+    /* Link de regreso */
+    .back-link {
+      position: fixed;
+      top: 1.5rem; left: 2rem;
+      font-size: .55rem;
+      letter-spacing: .25em;
+      color: rgba(0,255,240,.4);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color .3s;
+      z-index: 200;
+    }
+    .back-link:hover { color: #00fff0; }
+
+  </style>
+</head>
+<body>
+
+  <div class="scan"></div>
+  <canvas id="bg" style="position:fixed;inset:0;z-index:0;opacity:.5"></canvas>
+  <a href="index.html" class="back-link">&#8592; Volver al sitio</a>
+
+  <div class="stage">
+
+    <!-- ── LOGO MARK ── -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:32px">
+
+      <div class="logo-mark">
+        <div class="ring ring1"><div class="rdot"></div></div>
+        <div class="ring ring2"><div class="rdot"></div></div>
+        <div class="ring ring3"><div class="rdot"></div></div>
+        <div class="icon-bg"></div>
+
+        <!-- Centauro -->
+        <svg class="icon-svg" width="72" height="90" viewBox="0 0 72 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="ig" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%"   stop-color="#00fff0"/>
+              <stop offset="50%"  stop-color="#60d0ff"/>
+              <stop offset="100%" stop-color="#b44fff"/>
+            </linearGradient>
+            <filter id="igf">
+              <feGaussianBlur stdDeviation="1.5" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <!-- Cuerpo caballo -->
+          <ellipse cx="40" cy="64" rx="24" ry="13" stroke="url(#ig)" stroke-width="1.3" fill="none" filter="url(#igf)" style="animation-delay:.1s"/>
+          <!-- Patas -->
+          <line x1="24" y1="74" x2="20" y2="88" stroke="url(#ig)" stroke-width="1.2" style="animation-delay:.3s"/>
+          <line x1="31" y1="76" x2="29" y2="88" stroke="url(#ig)" stroke-width="1.2" style="animation-delay:.35s"/>
+          <line x1="49" y1="76" x2="51" y2="88" stroke="url(#ig)" stroke-width="1.2" style="animation-delay:.4s"/>
+          <line x1="56" y1="74" x2="60" y2="88" stroke="url(#ig)" stroke-width="1.2" style="animation-delay:.45s"/>
+          <!-- Cascos -->
+          <ellipse cx="20" cy="88.5" rx="3" ry="1.5" fill="#00fff0" opacity=".8" style="animation-delay:.6s"/>
+          <ellipse cx="29" cy="88.5" rx="3" ry="1.5" fill="#00fff0" opacity=".8" style="animation-delay:.65s"/>
+          <ellipse cx="51" cy="88.5" rx="3" ry="1.5" fill="#00fff0" opacity=".8" style="animation-delay:.7s"/>
+          <ellipse cx="60" cy="88.5" rx="3" ry="1.5" fill="#00fff0" opacity=".8" style="animation-delay:.75s"/>
+          <!-- Cola -->
+          <path d="M63 57 C70 54 72 62 68 70 C65 76 61 74 60 80" stroke="url(#ig)" stroke-width="1.1" fill="none" style="animation-delay:.5s"/>
+          <!-- Torso humano -->
+          <path d="M30 56 L28 36 L36 24 L42 36 L40 56" stroke="url(#ig)" stroke-width="1.3" fill="none" filter="url(#igf)" style="animation-delay:.2s"/>
+          <path d="M29 44 C29 38 43 38 43 44" stroke="url(#ig)" stroke-width=".8" fill="none" opacity=".6" style="animation-delay:.55s"/>
+          <!-- Brazo izquierdo -->
+          <path d="M28 30 L20 36 L16 44" stroke="url(#ig)" stroke-width="1.2" fill="none" style="animation-delay:.7s"/>
+          <!-- Brazo derecho + lanza -->
+          <path d="M42 30 L50 36 L55 28 L60 16" stroke="url(#ig)" stroke-width="1.2" fill="none" style="animation-delay:.75s"/>
+          <line x1="60" y1="16" x2="66" y2="4" stroke="#00fff0" stroke-width="1.4" filter="url(#igf)" style="animation-delay:.8s"/>
+          <polygon points="66,4 62,12 70,12" fill="#00fff0" opacity=".95" filter="url(#igf)" style="animation-delay:.85s"/>
+          <circle cx="66" cy="4" r="3" fill="#00fff0" opacity=".5" filter="url(#igf)" style="animation-delay:.9s"/>
+          <!-- Cuello + cabeza -->
+          <path d="M35 26 L36 20" stroke="url(#ig)" stroke-width="1.1" style="animation-delay:.9s"/>
+          <circle cx="36" cy="15" r="7" stroke="url(#ig)" stroke-width="1.3" fill="none" filter="url(#igf)" style="animation-delay:.95s"/>
+          <!-- Ojos -->
+          <circle cx="33.5" cy="13.5" r="1.5" fill="#00fff0" opacity=".8" style="animation-delay:1.1s"/>
+          <circle cx="38.5" cy="13.5" r="1.5" fill="#00fff0" opacity=".8" style="animation-delay:1.15s"/>
+          <!-- Corona -->
+          <line x1="36" y1="8" x2="36" y2="2" stroke="#b44fff" stroke-width="1.3" opacity=".9" style="animation-delay:1.2s"/>
+          <circle cx="36" cy="1.5" r="2" fill="#b44fff" opacity=".95" filter="url(#igf)" style="animation-delay:1.3s"/>
+          <!-- Casco -->
+          <path d="M30 12 C31 7 41 7 42 12" stroke="url(#ig)" stroke-width=".9" fill="none" opacity=".6" style="animation-delay:1.1s"/>
+        </svg>
+
+        <div class="particles" id="particles"></div>
+      </div>
+
+      <!-- ── WORDMARK ── -->
+      <div class="logo-text">
+        <div class="styx-word" id="styxWord"></div>
+        <div class="divider"></div>
+        <div class="studio-word">Studio</div>
+        <div class="tagline">Where code meets the eternal</div>
+      </div>
+    </div>
+
+    <!-- Controles de variante -->
+    <div class="controls">
+      <button class="ctrl-btn active" onclick="setVariant('full', this)">Logo Completo</button>
+      <button class="ctrl-btn"        onclick="setVariant('horizontal', this)">Horizontal</button>
+      <button class="ctrl-btn"        onclick="setVariant('icon', this)">Solo Icono</button>
+      <button class="ctrl-btn"        onclick="setVariant('light', this)">Fondo Claro</button>
+    </div>
+
+    <!-- Previsualización de variantes -->
+    <div class="variations">
+      <div class="var-item" title="Versión oscura">
+        <div class="var-mono">
+          <div class="styx-mini">STYX</div>
+          <div class="studio-mini">Studio</div>
+        </div>
+        <span class="var-label">Dark</span>
+      </div>
+      <div class="sep"></div>
+      <div class="var-item" title="Versión clara">
+        <div class="var-light">
+          <div class="styx-mini">STYX</div>
+          <div class="studio-mini">Studio</div>
+        </div>
+        <span class="var-label">Light</span>
+      </div>
+      <div class="sep"></div>
+      <div class="var-item" title="Solo icono / Favicon">
+        <div class="var-icon">
+          <svg width="36" height="44" viewBox="0 0 72 90" fill="none">
+            <defs>
+              <linearGradient id="ig2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%"   stop-color="#00fff0"/>
+                <stop offset="100%" stop-color="#b44fff"/>
+              </linearGradient>
+            </defs>
+            <ellipse cx="40" cy="64" rx="24" ry="13" stroke="url(#ig2)" stroke-width="1.5" fill="none"/>
+            <line x1="24" y1="74" x2="20" y2="88" stroke="url(#ig2)" stroke-width="1.5"/>
+            <line x1="31" y1="76" x2="29" y2="88" stroke="url(#ig2)" stroke-width="1.5"/>
+            <line x1="49" y1="76" x2="51" y2="88" stroke="url(#ig2)" stroke-width="1.5"/>
+            <line x1="56" y1="74" x2="60" y2="88" stroke="url(#ig2)" stroke-width="1.5"/>
+            <path d="M30 56 L28 36 L36 24 L42 36 L40 56" stroke="url(#ig2)" stroke-width="1.5" fill="none"/>
+            <path d="M28 30 L20 36 L16 44" stroke="url(#ig2)" stroke-width="1.3" fill="none"/>
+            <path d="M42 30 L50 36 L55 28 L60 16" stroke="url(#ig2)" stroke-width="1.3" fill="none"/>
+            <line x1="60" y1="16" x2="66" y2="4" stroke="#00fff0" stroke-width="1.5"/>
+            <polygon points="66,4 62,12 70,12" fill="#00fff0"/>
+            <circle cx="36" cy="15" r="7" stroke="url(#ig2)" stroke-width="1.5" fill="none"/>
+            <circle cx="33.5" cy="13.5" r="1.5" fill="#00fff0"/>
+            <circle cx="38.5" cy="13.5" r="1.5" fill="#00fff0"/>
+            <line x1="36" y1="8" x2="36" y2="2" stroke="#b44fff" stroke-width="1.3"/>
+            <circle cx="36" cy="1.5" r="2" fill="#b44fff"/>
+          </svg>
+        </div>
+        <span class="var-label">Favicon</span>
+      </div>
+    </div>
+
+  </div><!-- /stage -->
+
+
+  <script>
+    /* Canvas de partículas de fondo */
+    var cv  = document.getElementById('bg');
+    var ctx = cv.getContext('2d');
+    cv.width = window.innerWidth; cv.height = window.innerHeight;
+    window.addEventListener('resize', function () { cv.width = window.innerWidth; cv.height = window.innerHeight; });
+
+    var pts = [];
+    for (var i = 0; i < 60; i++) {
+      pts.push({
+        x: Math.random(), y: Math.random(),
+        vx: (Math.random() - .5) * .0004,
+        vy: (Math.random() - .5) * .0004,
+        r: Math.random() * 1 + .2,
+        a: Math.random() * .4 + .05,
+        c: Math.random() > .5 ? '#00fff0' : '#b44fff'
+      });
+    }
+
+    var t = 0;
+    (function anim() {
+      t += .005;
+      ctx.clearRect(0, 0, cv.width, cv.height);
+      pts.forEach(function (p, i) {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0) p.x = 1; if (p.x > 1) p.x = 0;
+        if (p.y < 0) p.y = 1; if (p.y > 1) p.y = 0;
+        ctx.beginPath();
+        ctx.arc(p.x * cv.width, p.y * cv.height, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = p.c;
+        ctx.globalAlpha = p.a * (Math.sin(t + i) * .3 + .7);
+        ctx.fill();
+        for (var j = i + 1; j < pts.length; j++) {
+          var dx = (p.x - pts[j].x) * cv.width;
+          var dy = (p.y - pts[j].y) * cv.height;
+          var d  = Math.sqrt(dx * dx + dy * dy);
+          if (d < 100) {
+            ctx.beginPath();
+            ctx.moveTo(p.x * cv.width, p.y * cv.height);
+            ctx.lineTo(pts[j].x * cv.width, pts[j].y * cv.height);
+            ctx.strokeStyle = p.c;
+            ctx.globalAlpha = (1 - d / 100) * .05;
+            ctx.lineWidth = .5;
+            ctx.stroke();
+          }
+        }
+      });
+      ctx.globalAlpha = 1;
+      requestAnimationFrame(anim);
+    })();
+
+    /* Construcción animada de "STYX" */
+    var sw = document.getElementById('styxWord');
+    'STYX'.split('').forEach(function (ch, i) {
+      var sp = document.createElement('span');
+      sp.className = 'styx-char';
+      sp.textContent = ch;
+      sp.style.animationDelay = (.4 + i * .12) + 's';
+      sw.appendChild(sp);
+    });
+
+    /* Partículas orbitales */
+    var pCont  = document.getElementById('particles');
+    var colors = ['#00fff0','#b44fff','#f0c040','#00fff0','#60c0ff'];
+    for (var i = 0; i < 12; i++) {
+      var p = document.createElement('div');
+      p.className = 'particle';
+      var sz     = Math.random() * 3 + 1.5;
+      var radius = 80 + Math.random() * 30;
+      var dur    = 6 + Math.random() * 8;
+      var color  = colors[Math.floor(Math.random() * colors.length)];
+      p.style.cssText = [
+        'width:'  + sz + 'px',
+        'height:' + sz + 'px',
+        'background:' + color,
+        'box-shadow:0 0 8px ' + color,
+        '--r:' + radius + 'px',
+        'top:50%', 'left:50%',
+        'margin-top:'  + (-sz / 2) + 'px',
+        'margin-left:' + (-sz / 2) + 'px',
+        'animation-duration:'+ dur + 's',
+        'animation-delay:'   + (Math.random() * dur) + 's',
+      ].join(';');
+      pCont.appendChild(p);
+    }
+
+    /* Cambio de variante */
+    function setVariant(v, btn) {
+      document.querySelectorAll('.ctrl-btn').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      console.log('Variante activa:', v);
+      /* TODO: implementar cambios visuales por variante */
+    }
+  </script>
+
+</body>
+</html>

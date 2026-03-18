@@ -1,0 +1,53 @@
+/* ─────────────────────────────────────────────
+   STYX STUDIO — Variables & Reset
+   ───────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg:  #020308;
+  --bg2: #05071a;
+  --bg3: #080b20;
+
+  --c:   #00fff0;   /* cyan principal */
+  --cd:  #00bcd4;   /* cyan dark */
+  --cdd: #003d4a;   /* cyan más oscuro */
+
+  --v:   #b44fff;   /* violeta */
+  --vd:  #6a00b8;   /* violeta dark */
+
+  --g:   #f0c040;   /* dorado */
+  --w:   #dde8f5;   /* blanco suave */
+  --s:   #5a6a88;   /* gris azulado */
+  --s2:  #2a3550;   /* gris oscuro */
+
+  --gc:  0 0 40px #00fff077, 0 0 100px #00fff022;   /* glow cyan */
+  --gv:  0 0 40px #b44fff66, 0 0 100px #b44fff22;   /* glow violeta */
+
+  --ease: cubic-bezier(.16, 1, .3, 1);
+}
+
+html { font-size: 16px; }
+
+/* ── Keyframes compartidos ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: .4; }
+  50%       { opacity: 1; }
+}
+
+@keyframes charIn {
+  to { opacity: 1; transform: translateY(0) rotateX(0) scale(1); }
+}
